@@ -36,6 +36,7 @@ def eye_aspect_ratio(points):
     horizontal = math.dist(points[0], points[3])
     return vertical / (2.0 * horizontal)
 
+
 class EyeTracker:
     """finds a face in an image and measures how open the eyes are"""
 
@@ -83,12 +84,11 @@ class EyeTracker:
         self.close()
 
 
-
-
-
-def ensure_model(path="face_landmarker.task",
-                 url="https://storage.googleapis.com/mediapipe-models/"
-                 "face_landmarker/face_landmarker/float16/1/face_landmarker.task"):
+def ensure_model(
+    path="face_landmarker.task",
+    url="https://storage.googleapis.com/mediapipe-models/"
+    "face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+):
     """
     download ml model if it doesn't exist
     currently only used in demo.py, for containers the download is in the dockerfile

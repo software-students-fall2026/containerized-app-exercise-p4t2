@@ -13,8 +13,6 @@ from eye_tracker import EyeTracker, ensure_model
 CAMERA_INDEX = int(os.environ.get("CAMERA_INDEX", "1"))
 
 
-
-
 class ListCollection:
     """Stands in for a MongoDB collection so the demo needs no database."""
 
@@ -40,10 +38,7 @@ def main():
     cap = cv2.VideoCapture(CAMERA_INDEX)
 
     if not cap.isOpened():
-        print(
-            f"Could not open camera {CAMERA_INDEX}. "
-            "Try CAMERA_INDEX=0 or 2."
-        )
+        print(f"Could not open camera {CAMERA_INDEX}. " "Try CAMERA_INDEX=0 or 2.")
         return
 
     path = ensure_model()
@@ -72,10 +67,7 @@ def main():
 
             now = time.time()
 
-            state = recorder.process_frame(
-                jpeg.tobytes(),
-                now
-            )
+            state = recorder.process_frame(jpeg.tobytes(), now)
 
             if state == "blink":
                 total_blinks += 1
@@ -83,20 +75,11 @@ def main():
                 print(f"blinked total={total_blinks}")
 
             put_text(frame, f"state: {state}", 30)
-            put_text(
-                frame,
-                f"threshold: {detector.threshold:.3f}",
-                60
-            )
+            put_text(frame, f"threshold: {detector.threshold:.3f}", 60)
             put_text(frame, f"blinks: {total_blinks}", 90)
 
             if now < flash_until:
-                put_text(
-                    frame,
-                    "BLINK",
-                    frame.shape[0] - 20,
-                    (0, 0, 255)
-                )
+                put_text(frame, "BLINK", frame.shape[0] - 20, (0, 0, 255))
 
             cv2.imshow("Blink demo (q to quit)", frame)
 

@@ -13,6 +13,7 @@ WARMUP_SECONDS = 2.0  # use DEFAULT_THRESHOLD until this much data exists
 DEFAULT_THRESHOLD = 0.20  # a typical threshold, used only during warmup
 BASELINE_PERCENTILE = 0.75  # used to determine what ear value is considered as 'open'
 
+
 class BlinkDetector:
     """
     Turns a stream of EAR values into blinks.
