@@ -1,5 +1,6 @@
-from flask import Flask, request, jsonify
+'''Flask API'''
 import time
+from flask import Flask, request, jsonify
 
 from blink_recorder import BlinkRecorder, get_collection
 from eye_tracker import EyeTracker
@@ -14,13 +15,15 @@ recorder = BlinkRecorder(
 
 
 
-'''
-main entry point
-calls process_frame
-returns state (blink, open, close)
-'''
+
 @app.post("/process-frame")
 def process_frame():
+    '''
+    main entry point to ml client
+    calls process_frame
+    returns state (blink, open, close)
+    '''
+
     if "image" not in request.files:
         return jsonify({"error": "missing image"}), 400
 
@@ -41,6 +44,7 @@ def process_frame():
 
 @app.get("/health")
 def health():
+    '''check ml server status'''
     return jsonify({"status": "ok"})
 
 

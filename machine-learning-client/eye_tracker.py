@@ -87,7 +87,8 @@ class EyeTracker:
 
 
 def ensure_model(path="face_landmarker.task",
-                 url="https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task"):
+                 url="https://storage.googleapis.com/mediapipe-models/"
+                 "face_landmarker/face_landmarker/float16/1/face_landmarker.task"):
     """
     download ml model if it doesn't exist
     currently only used in demo.py, for containers the download is in the dockerfile

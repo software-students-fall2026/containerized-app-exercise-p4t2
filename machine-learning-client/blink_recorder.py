@@ -24,7 +24,8 @@ class BlinkRecorder:
     def process_frame(self, image_bytes, timestamp):
         """
         analyze one jpeg frame (timestamp = epoch seconds)
-        returns "blink", "open" or "close". saves {"time": ...} to the database whenever a blink finishes
+        returns "blink", "open" or "close".
+        saves {"time": ...} to the database whenever a blink finishes
         """
         ear = self.eye_tracker.measure(image_bytes)
         state, blink_time = self.blink_detector.update(ear, timestamp)

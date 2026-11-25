@@ -2,7 +2,9 @@
 
 from collections import deque
 
-THRESHOLD_RATIO = 0.75  # how far below the baseline the ear needs to fall before we call the eyes closed
+# how far below the baseline the ear needs to fall before we call the eyes closed
+THRESHOLD_RATIO = 0.75
+
 MIN_BLINK_SECONDS = 0.05
 MAX_BLINK_SECONDS = 0.40
 
@@ -55,7 +57,6 @@ class BlinkDetector:
         return eye_state, blink_time
         blink_the time the eyes closed if a blink just finished, otherwise None.
         """
-        
         if ear < self.threshold:
             # eyes close
             if self.closed_since is None:
